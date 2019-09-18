@@ -30,7 +30,7 @@ describe FiguresController do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
     check "title_#{Title.first.id}"
-    click_button "Create New Figure"
+    click_button "Save Figure"
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
     expect(figure.name).to eq("Doctor Who")
@@ -41,7 +41,7 @@ describe FiguresController do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
     check "landmark_#{Landmark.first.id}"
-    click_button "Create New Figure"
+    click_button "Save Figure"
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
     expect(figure.name).to eq("Doctor Who")
@@ -52,7 +52,7 @@ describe FiguresController do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
     fill_in :new_title, :with => "Time Lord"
-    click_button "Create New Figure"
+    click_button "Save Figure"
     figure = Figure.last
     title = Title.last
     expect(Figure.all.count).to eq(3)
@@ -65,7 +65,7 @@ describe FiguresController do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
     fill_in :new_landmark, :with => "The Tardis"
-    click_button "Create New Figure"
+    click_button "Save Figure"
     figure = Figure.last
     landmark = Landmark.last
     expect(Figure.all.count).to eq(3)
@@ -119,7 +119,7 @@ describe FiguresController do
     visit "/figures/#{@original_figure.id}/edit"
     fill_in :figure_name, with: "Missy"
     fill_in :new_landmark, with: "Big Tower"
-    click_button "Edit Figure"
+    click_button "Save Figure"
 
     expect(page.current_path).to eq("/figures/#{@original_figure.id}")
     expect(page.body).to include("Missy")
